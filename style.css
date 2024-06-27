@@ -4,12 +4,14 @@ body {
     padding: 0;
     background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
     color: #333;
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
 }
 
 header {
     background: #ff6f61;
     color: white;
     padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 header .container {
@@ -21,6 +23,7 @@ header .container {
 header h1 {
     margin: 0;
     font-size: 2.5em;
+    animation: fadeInLeft 1s ease-in-out;
 }
 
 header nav ul {
@@ -42,6 +45,7 @@ header nav ul li a {
     padding: 10px 0;
     display: inline-block;
     position: relative;
+    animation: fadeInRight 1s ease-in-out;
 }
 
 header nav ul li a::after {
@@ -54,7 +58,6 @@ header nav ul li a::after {
     right: 0;
     background: white;
     transition: width 0.3s ease;
-    -webkit-transition: width 0.3s ease;
 }
 
 header nav ul li a:hover::after {
@@ -68,6 +71,7 @@ header nav ul li a:hover::after {
     padding: 210px 0;
     background: linear-gradient(to right, #ff6f61, #ff9472);
     color: white;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .hero h2 {
@@ -80,6 +84,49 @@ header nav ul li a:hover::after {
     font-size: 1.5em;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease-in-out;
+}
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.active {
+    display: block;
 }
 
 .container {
@@ -95,6 +142,7 @@ section {
 .services-grid {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .service {
@@ -104,6 +152,12 @@ section {
     border-radius: 10px;
     width: 30%;
     text-align: center;
+    transition: transform 0.3s ease;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.service:hover {
+    transform: translateY(-10px);
 }
 
 .service h3 {
@@ -113,6 +167,70 @@ section {
 
 .service p {
     color: #666;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 18.5%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+.reviews-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden; /* Убираем горизонтальную прокрутку внутри контейнера отзывов */
+}
+
+.review {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    animation: fadeInUp 1s ease-in-out;
+    display: none;
+}
+
+.review.fade-in-right {
+    animation: fadeInRightNew 1s ease-in-out;
+}
+
+.review.fade-out-left {
+    animation: fadeOutLeftNew 1s ease-in-out;
+}
+
+.blog-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden; /* Убираем горизонтальную прокрутку внутри контейнера новостей */
+}
+
+.blog-post {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    animation: fadeInUp 1s ease-in-out;
+    display: none;
+}
+
+.blog-post.fade-in-right {
+    animation: fadeInRightNew 1s ease-in-out;
+}
+
+.blog-post.fade-out-left {
+    animation: fadeOutLeftNew 1s ease-in-out;
 }
 
 footer {
@@ -129,6 +247,7 @@ form {
     border-radius: 10px;
     max-width: 100%;
     margin: 0 auto;
+    animation: fadeIn 2s ease-in-out;
 }
 
 form label {
@@ -153,10 +272,39 @@ form button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
+    transition: background 0.3s ease;
 }
 
 form button:hover {
     background: #ff9472;
+}
+
+.styled-button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.styled-button:hover {
+    background-color: #ff9472;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInDown {
@@ -179,4 +327,99 @@ form button:hover {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRightNew {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOutLeftNew {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

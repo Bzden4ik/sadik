@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Садик "МАДОУ ДС №250"</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=0e926428-3100-4eed-9f5d-545a2dc4fcb7&lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
     <header>
@@ -15,6 +16,9 @@
                     <li><a href="#home">Главная</a></li>
                     <li><a href="#about">О нас</a></li>
                     <li><a href="#services">Услуги</a></li>
+                    <li><a href="#gallery">Фотогалерея</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#blog">Новости</a></li>
                     <li><a href="#contact">Контакты</a></li>
                     <li><a href="#record">Записаться в садик</a></li>
                 </ul>
@@ -24,6 +28,21 @@
     
     <section id="home">
         <div class="hero">
+            <div class="slider"style="
+            display: none;
+        ">
+                <div class="slide active">
+                    <img src="image1.jpg" alt="Слайд 1">
+                </div>
+                <div class="slide">
+                    <img src="image2.jpg" alt="Слайд 2">
+                </div>
+                <div class="slide">
+                    <img src="image3.jpg" alt="Слайд 3">
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
             <h2>Добро пожаловать в наш сказочный садик!</h2>
             <p>Мы создаем волшебство каждый день!</p>
         </div>
@@ -33,6 +52,17 @@
         <div class="container">
             <h2>О нас</h2>
             <p>Наш садик предлагает безопасное, творческое и веселое окружение для вашего ребенка.</p>
+            <button id="openModalBtn" class="styled-button">Смотреть видео-презентацию</button>
+            <!-- Модальное окно -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <video controls>
+                        <source src="video-presentation.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -40,27 +70,104 @@
         <div class="container">
             <h2>Услуги</h2>
             <div class="services-grid">
-                <div class="service">
+                <div class="service fade-in">
                     <h3>Образование</h3>
                     <p>Интерактивные занятия для развития вашего ребенка.</p>
                 </div>
-                <div class="service">
+                <div class="service fade-in">
                     <h3>Игровые зоны</h3>
                     <p>Современные игровые зоны для безопасного и веселого времени.</p>
                 </div>
-                <div class="service">
+                <div class="service fade-in">
                     <h3>Экскурсии</h3>
                     <p>Регулярные экскурсии и походы на свежем воздухе.</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Фотогалерея</h2>
+            <div class="gallery-grid fade-in">
+                <img src="img/1.jpg" alt="Фото 1">
+                <img src="img/4.jpg" alt="Фото 2">
+                <img src="img/4.jpg" alt="Фото 3">
+                <img src="img/5.jpg" alt="Фото 4">
+                <img src="img/6.jpg" alt="Фото 5">
+                <img src="img/8.jpg" alt="Фото 6">
+                <img src="img/9.jpg" alt="Фото 7">
+                <img src="img/11.jpg" alt="Фото 8">
+                <img src="img/12.jpg" alt="Фото 9">
+                <img src="img/13.jpg" alt="Фото 10">
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <h2>Отзывы</h2>
+            <div class="reviews-grid">
+                <div class="review fade-in-right">
+                    <p>"Прекрасный садик! Мой ребенок с радостью ходит каждый день."</p>
+                    <p><strong>- Анна Иванова</strong></p>
+                </div>
+                <div class="review fade-in-right">
+                    <p>"Очень довольны воспитателями и программой обучения."</p>
+                    <p><strong>- Сергей Петров</strong></p>
+                </div>
+                <div class="review fade-in-right">
+                    <p>"Рекомендую всем! Отличное место для развития детей."</p>
+                    <p><strong>- Мария Смирнова</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <div class="container">
+            <h2>Новости</h2>
+            <div class="blog-grid">
+                <div class="blog-post fade-in-right">
+                    <h3>Новогодний утренник</h3>
+                    <p>Дата: 20 декабря 2024</p>
+                    <p>Приглашаем всех родителей на наш новогодний утренник! Будет весело и интересно!</p>
+                </div>
+                <div class="blog-post fade-in-right">
+                    <h3>Открытие новой игровой зоны</h3>
+                    <p>Дата: 1 ноября 2024</p>
+                    <p>Мы с радостью объявляем об открытии новой современной игровой зоны для детей!</p>
+                </div>
+                <div class="blog-post fade-in-right">
+                    <h3>Праздник осени</h3>
+                    <p>Дата: 10 октября 2024</p>
+                    <p>Приглашаем всех на праздник осени! Будет много игр и угощений.</p>
+                </div>
+                <div class="blog-post fade-in-right">
+                    <h3>Летний лагерь</h3>
+                    <p>Дата: 15 июня 2024</p>
+                    <p>Летний лагерь открыт для всех детей от 3 до 7 лет. Много интересных мероприятий и игр.</p>
+                </div>
+                <div class="blog-post fade-in-right">
+                    <h3>День открытых дверей</h3>
+                    <p>Дата: 25 мая 2024</p>
+                    <p>Приглашаем всех родителей и детей на день открытых дверей. Узнайте больше о нашем садике!</p>
+                </div>
+                <div class="blog-post fade-in-right">
+                    <h3>Праздник урожая</h3>
+                    <p>Дата: 20 сентября 2024</p>
+                    <p>Праздник урожая с множеством веселых мероприятий и вкусных угощений.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact">
         <div class="container">
             <h2>Контакты</h2>
             <p>Свяжитесь с нами по телефону: <strong>+7 (351) 225-31-64</strong></p>
             <p>Адрес: ул.Наркома Малышева, 1, Челябинск, 454136</p>
+            <div id="map"></div>
         </div>
     </section>
     
@@ -78,7 +185,7 @@
                 <input type="text" id="parent-name" name="parent_name" required>
 
                 <label for="phone">Телефон:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Формат: 123-456-7890">
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -97,36 +204,6 @@
             <p>&copy; 2024 Садик "МАДОУ ДС №250". Все права защищены.</p>
         </div>
     </footer>
-    
-    <script>
-        document.getElementById('recordForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // предотвращаем отправку формы
-
-            var formData = new FormData(this);
-
-            fetch('process_form.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                var responseMessage = document.getElementById('responseMessage');
-                responseMessage.style.display = 'block';
-                responseMessage.style.opacity = 1;
-                this.reset(); // сбрасываем форму
-
-                setTimeout(() => {
-                    responseMessage.style.transition = 'opacity 2s';
-                    responseMessage.style.opacity = 0;
-                    setTimeout(() => {
-                        responseMessage.style.display = 'none';
-                    }, 2000); // удаляем элемент из DOM после затухания
-                }, 1000); // задержка перед началом затухания
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
