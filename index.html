@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Садик "Сказка"</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Садик "МАДОУ ДС №250"</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#record">Записаться в садик</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home">
+        <div class="hero">
+            <h2>Добро пожаловать в наш сказочный садик!</h2>
+            <p>Мы создаем волшебство каждый день!</p>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <h2>О нас</h2>
+            <p>Наш садик предлагает безопасное, творческое и веселое окружение для вашего ребенка.</p>
+        </div>
+    </section>
+    
+    <section id="services">
+        <div class="container">
+            <h2>Услуги</h2>
+            <div class="services-grid">
+                <div class="service">
+                    <h3>Образование</h3>
+                    <p>Интерактивные занятия для развития вашего ребенка.</p>
+                </div>
+                <div class="service">
+                    <h3>Игровые зоны</h3>
+                    <p>Современные игровые зоны для безопасного и веселого времени.</p>
+                </div>
+                <div class="service">
+                    <h3>Экскурсии</h3>
+                    <p>Регулярные экскурсии и походы на свежем воздухе.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p>Свяжитесь с нами по телефону: <strong>+7 (351) 225-31-64</strong></p>
+            <p>Адрес: ул.Наркома Малышева, 1, Челябинск, 454136</p>
+        </div>
+    </section>
+    
+    <section id="record">
+        <div class="container">
+            <h2>Записаться в садик</h2>
+            <form id="recordForm">
+                <label for="name">Имя ребенка:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="age">Возраст ребенка:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="parent-name">Имя родителя:</label>
+                <input type="text" id="parent-name" name="parent_name" required>
+
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+
+                <button type="submit">Отправить</button>
+                <p id="responseMessage" style="color: green; display: none;">Запись успешно добавлена</p>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Садик "Сказка". Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('recordForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // предотвращаем отправку формы
+
+            var formData = new FormData(this);
+
+            fetch('process_form.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                var responseMessage = document.getElementById('responseMessage');
+                responseMessage.style.display = 'block';
+                responseMessage.style.opacity = 1;
+                this.reset(); // сбрасываем форму
+
+                setTimeout(() => {
+                    responseMessage.style.transition = 'opacity 2s';
+                    responseMessage.style.opacity = 0;
+                    setTimeout(() => {
+                        responseMessage.style.display = 'none';
+                    }, 2000); // удаляем элемент из DOM после затухания
+                }, 1000); // задержка перед началом затухания
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
